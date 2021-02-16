@@ -110,6 +110,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotations\RequiredField.cs" />
+    <Compile Include="BusinessObjects\BusinessObject.cs" />
+    <Compile Include="BusinessObjects\Rol.cs" />
+    <Compile Include="BusinessObjects\User.cs" />
+    <Compile Include="Controllers\BusinessObjectViewController.cs" />
+    <Compile Include="DatabaseUpdate\Schema.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\RolSeeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\UserSeeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\SchemaSeeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\Seeder.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
@@ -137,6 +147,9 @@
   <ItemGroup>
     <None Include="Welcome.html" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\ReadMe.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -146,4 +159,3 @@
   </Target>
   -->
 </Project>
-

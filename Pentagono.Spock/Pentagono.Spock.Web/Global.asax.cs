@@ -10,6 +10,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp.Web;
 using DevExpress.Web;
+using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 
 namespace Pentagono.Spock.Web {
     public class Global : System.Web.HttpApplication {
@@ -26,6 +27,10 @@ namespace Pentagono.Spock.Web {
         protected void Session_Start(Object sender, EventArgs e) {
             Tracing.Initialize();
             WebApplication.SetInstance(Session, new SpockAspNetApplication());
+            WebApplication.Instance.Security =
+                   new SecurityStrategyComplex(typeof(Module.BusinessObjects.User), typeof(Module.BusinessObjects.Rol),
+                        new AuthenticationStandard());
+
             SecurityStrategy security = WebApplication.Instance.GetSecurityStrategy();
             security.RegisterXPOAdapterProviders();
             DevExpress.ExpressApp.Web.Templates.DefaultVerticalTemplateContentNew.ClearSizeLimit();

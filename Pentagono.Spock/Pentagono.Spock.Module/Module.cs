@@ -16,6 +16,8 @@ using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.ExpressApp.Xpo;
+using DevExpress.ExpressApp.Validation;
+using static Pentagono.Spock.Module.Annotations.RequiredFieldAttribute;
 
 namespace Pentagono.Spock.Module {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.ModuleBase.
@@ -34,7 +36,29 @@ namespace Pentagono.Spock.Module {
         }
         public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
+            foreach (ITypeInfo info in typesInfo.PersistentTypes)
+            {
+                if (info.Type.Namespace == typeof(BusinessObjects.User).Namespace)
+                {
+                   ModelNodesGeneratorSettings.SetIdPrefix(info.Type, "Spock_" + info.Type.Name);
+                }
+            }
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
         }
+
+        public override void Setup(ApplicationModulesManager moduleManager)
+        {
+            base.Setup(moduleManager);
+            ValidationRulesRegistrator.RegisterRule(moduleManager,
+                typeof(RequiredField),
+                typeof(IRequiredFieldProperties));
+        }
+
+        /*
+        protected override IEnumerable<Type> GetDeclaredControllerTypes()
+            => new[] {
+                typeof(ControlController),
+            };
+            */
     }
 }

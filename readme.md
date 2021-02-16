@@ -1,4 +1,4 @@
-# SPOCK (Sistema de Pólizas y Cotización para Brokers)
+# SPOCK (Sistema de Pólizas y Cotizaciones para Brokers)
 
 This project was development under [this specifications](./docs/Requirements.pdf).
 
@@ -11,7 +11,7 @@ This project was development under [this specifications](./docs/Requirements.pdf
 ### Configuration
 Change the string connection in web config file.
 
-###Credentials
+### Credentials
 
 User: admin
 
