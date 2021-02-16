@@ -6,7 +6,8 @@ This project was development under [this specifications](./docs/Requirements.pdf
 ### Dependencies
 .NET Framework 4.7.2
 
-[XAF DevExpress 20.1.3](https://1drv.ms/u/s!Ajbo3HlC8_gQhS1KnSAKYHvWjm6_?e=qhRlO0)
+[XAF DevExpress Trial 2.2.5](https://go.devexpress.com/DevexpressDownload_UniversalTrial.aspx)
+![XAF](./docs/xaf.png)
 
 ### Configuration
 Change the string connection in web config file.
