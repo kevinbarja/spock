@@ -1,10 +1,9 @@
 ﻿using DevExpress.Data.Filtering;
 using DevExpress.Xpo;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using Microsoft.VisualBasic.FileIO;
 
 namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
 {
@@ -19,6 +18,11 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
         }
 
         public Updater Updater { get; set; }
+
+        public Session Session
+        {
+            get { return Updater.Session; }
+        }
 
         public abstract void Run();
 
@@ -49,6 +53,43 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
         public void SaveChanges()
         {
             Updater.ObjectSpace.CommitChanges();
+        }
+
+        public DataTable ReadCsv(string csvName)
+        {
+            var assembly = Updater.Assembly();
+            var resources = assembly.GetManifestResourceNames();
+            string resourceName = assembly.GetManifestResourceNames()
+                .Single(str => str.EndsWith("." + csvName));
+            DataTable csvData = new DataTable();
+            using (TextFieldParser csvReader = new TextFieldParser(assembly.GetManifestResourceStream(resourceName), Encoding.GetEncoding("iso-8859-1"), false))
+            {
+                csvReader.TextFieldType = FieldType.Delimited;
+                csvReader.SetDelimiters(";");
+                csvReader.HasFieldsEnclosedInQuotes = false;
+
+                string[] columns = csvReader.ReadFields();
+                foreach (string column in columns)
+                {
+                    DataColumn csvColumn = new DataColumn(column);
+                    csvColumn.AllowDBNull = true;
+                    csvData.Columns.Add(csvColumn);
+                }
+
+                while (!csvReader.EndOfData)
+                {
+                    string[] rowData = csvReader.ReadFields();
+                    for (int i = 0; i < rowData.Length; i++)
+                    {
+                        if (rowData[i] == "")
+                        {
+                            rowData[i] = null;
+                        }
+                    }
+                    csvData.Rows.Add(rowData);
+                }
+            }
+            return csvData;
         }
     }
 }

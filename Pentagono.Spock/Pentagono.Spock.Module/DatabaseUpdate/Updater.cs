@@ -24,6 +24,10 @@ namespace Pentagono.Spock.Module.DatabaseUpdate {
             base.UpdateDatabaseAfterUpdateSchema();
             new RolSeeder(this);
             new UserSeeder(this);
+            new CitySeeder(this);
+            new VehicleBrandSeeder(this);
+            new VehicleTypeSeeder(this);
+            new VehicleModelSeeder(this);
         }
 
 

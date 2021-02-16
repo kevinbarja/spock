@@ -1,4 +1,5 @@
 ﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.Xpo;
 using Pentagono.Spock.Module.Annotations;
 using System;
@@ -7,15 +8,25 @@ using Caption = DevExpress.Xpo.DisplayNameAttribute;
 
 namespace Pentagono.Spock.Module.BusinessObjects
 {
+    public interface IGridLookup { }
+
     [NonPersistent]
-    [OptimisticLocking(false)]
-    public abstract class BusinessObject : XPBaseObject
+    [OptimisticLocking("Version")]
+    [NullableBehavior(NullableBehavior.ByUnderlyingType)]
+    [Appearance("RedInactiveRecords", TargetItems = "*", Criteria = nameof(IsActive) + "=FALSE", Context = "ListView", FontColor = "Red")]
+    public abstract class BusinessObject : XPBaseObject, IGridLookup
     {
+
+        #region String size
+        protected const int LARGE_STRING_SIZE = 500;
+        protected const int MEDIUM_STRING_SIZE = 255;
+        protected const int SMALL_STRING_SIZE = 10;
+        #endregion
+
         public BusinessObject(Session session) : base(session) { }
 
         int id;
         bool isActive = true;
-        //        string displayName = string.Empty;
         User user;
         DateTime createdDate;
 
@@ -27,22 +38,13 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref id, value);
         }
 
+        [Caption("Activo")]
         [MemberDesignTimeVisibility(false)]
         public bool IsActive
         {
             get => isActive;
             set => SetPropertyValue(ref isActive, value);
         }
-
-/*
-        [@DisplayName("Nombre")]
-        [Size(255), Nullable(false), RequiredField]
-        public string DisplayName
-        {
-            get => displayName;
-            set => SetPropertyValue(ref displayName, value);
-        }
-*/
 
         [MemberDesignTimeVisibility(false)]
         public User User
@@ -63,7 +65,10 @@ namespace Pentagono.Spock.Module.BusinessObjects
         {
             base.OnSaving();
             if (!(Session is NestedUnitOfWork) && Session.IsNewObject(this))
-                user = (User) SecuritySystem.CurrentUser;
+            {
+                user = (User)SecuritySystem.CurrentUser;
+                createdDate = DateTime.Now;
+            }
         }
 
         protected new object GetPropertyValue([CallerMemberName]string propertyName = null)
@@ -73,7 +78,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             => base.GetPropertyValue<T>(propertyName);
 
         protected bool SetPropertyValue<T>(ref T propertyValueHolder, T newValue, [CallerMemberName]string propertyName = null)
-            => base.SetPropertyValue<T>(propertyName, ref propertyValueHolder, newValue);
+            => SetPropertyValue(propertyName, ref propertyValueHolder, newValue);
 
         protected new XPCollection GetCollection([CallerMemberName] string propertyName = null)
             => base.GetCollection(propertyName);
@@ -85,7 +90,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             => base.GetDelayedPropertyValue<T>(propertyName);
 
         protected bool SetDelayedPropertyValue<T>(T value, [CallerMemberName] string propertyName = null)
-            => base.SetDelayedPropertyValue(propertyName, value);
+            => SetDelayedPropertyValue(propertyName, value);
 
         protected new object EvaluateAlias([CallerMemberName] string propertyName = null)
             => base.EvaluateAlias(propertyName);

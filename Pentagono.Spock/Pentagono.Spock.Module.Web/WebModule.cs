@@ -13,6 +13,7 @@ using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.Persistent.BaseImpl;
+using Pentagono.Spock.Module.Web.Controllers;
 
 namespace Pentagono.Spock.Module.Web {
     [ToolboxItemFilter("Xaf.Platform.Web")]
@@ -38,5 +39,11 @@ namespace Pentagono.Spock.Module.Web {
             application.CreateCustomUserModelDifferenceStore += Application_CreateCustomUserModelDifferenceStore;
             // Manage various aspects of the application UI and behavior at the module level.
         }
+
+        protected override IEnumerable<Type> GetDeclaredControllerTypes()
+            => new[] {
+                typeof(GridListController),
+                typeof(GridLookupController),
+            };
     }
 }

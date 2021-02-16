@@ -1,8 +1,33 @@
-﻿<?xml version="1.0" ?>
-<Application Title="Pentagono.Spock">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Spock" Company="Pentágono" Description="Sistema de Pólizas y Cotizaciones para Brokers" AboutInfoString="{0:ProductName}&lt;br&gt;{0:Company}&lt;br&gt;{0:Version}&lt;br&gt;{0:Description}" PreferredLanguage="es-BO">
+  <NavigationItems>
+    <Items>
+      <Item Id="Params" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Cities" ViewId="Spock_City_ListView" Index="0" IsNewNode="True" />
+          <Item Id="VehicleBrands" ViewId="Spock_VehicleBrand_ListView" Index="1" IsNewNode="True" />
+          <Item Id="VehicleTypes" ViewId="Spock_VehicleType_ListView" Index="2" IsNewNode="True" />
+          <Item Id="VehicleModels" ViewId="Spock_VehicleModel_ListView" Index="3" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Caption="Reportes" />
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="20.2.5.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
+    <ListView Id="Spock_City_ListView" MasterDetailMode="ListViewAndDetailView">
+      <Columns>
+        <ColumnInfo Id="Code" Index="0" />
+        <ColumnInfo Id="Name" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="Spock_VehicleBrand_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <ListView Id="Spock_VehicleModel_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <ListView Id="Spock_VehicleType_ListView" MasterDetailMode="ListViewAndDetailView" />
   </Views>
 </Application>

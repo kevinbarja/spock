@@ -92,6 +92,7 @@
     <Reference Include="DevExpress.XtraReports.v20.2">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="mscorlib">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -118,14 +119,22 @@
   <ItemGroup>
     <Compile Include="Annotations\RequiredField.cs" />
     <Compile Include="BusinessObjects\BusinessObject.cs" />
+    <Compile Include="BusinessObjects\VehicleModel.cs" />
+    <Compile Include="BusinessObjects\VehicleType.cs" />
+    <Compile Include="BusinessObjects\VehicleBrand.cs" />
+    <Compile Include="BusinessObjects\City.cs" />
     <Compile Include="BusinessObjects\Rol.cs" />
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="Controllers\BusinessObjectViewController.cs" />
     <Compile Include="DatabaseUpdate\Schema.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\VehicleModelSeeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\VehicleTypeSeeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\CitySeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\RolSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\UserSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\SchemaSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\Seeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\VehicleBrandSeeder.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
@@ -137,12 +146,22 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BusinessObjects\ReadMe.txt" />
     <None Include="Controllers\ReadMe.txt" />
     <None Include="DatabaseUpdate\ReadMe.txt" />
+    <EmbeddedResource Include="DatabaseUpdate\Seeders\DataFiles\VehicleBrand.csv" />
     <None Include="Images\ReadMe.txt" />
+    <EmbeddedResource Include="Model.DesignedDiffs.Localization.es-BO.xafml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Model.DesignedDiffs.Localization.es.xafml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +175,7 @@
   <ItemGroup>
     <Content Include="Reports\ReadMe.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -12,17 +12,19 @@ This project was development under [this specifications](./docs/Requirements.pdf
 
   - .NET Framework 4.7.2
   - MSQLServer
-  - [XAF DevExpress Trial 2.2.5](https://go.devexpress.com/DevexpressDownload_UniversalTrial.aspx)
+  - [XAF DevExpress Trial 20.2.5](https://go.devexpress.com/DevexpressDownload_UniversalTrial.aspx)
 
 ![XAF](./docs/xaf.png)
 
 ### Configuration
 
-Change the string connection in [web config file] (https://github.com/kevinbarja/spock/blob/5d4c6c0c22959dd0a3c34d43733572d736c5e7bc/Pentagono.Spock/Pentagono.Spock.Web/Web.config#L53).
+Change the string connection in [web config file](https://github.com/kevinbarja/spock/blob/5d4c6c0c22959dd0a3c34d43733572d736c5e7bc/Pentagono.Spock/Pentagono.Spock.Web/Web.config#L53)
 
 ```
 <add name="ConnectionString" connectionString="XpoProvider=MSSqlServer; data source=YOUR-HOST; initial catalog=spock; User Id=YOUR-USER-DB; Password=YOUR-PWD-DB; Persist Security Info=True;" />
 ```
+
+Create a database called **spock**
 
 ### Credentials
 
