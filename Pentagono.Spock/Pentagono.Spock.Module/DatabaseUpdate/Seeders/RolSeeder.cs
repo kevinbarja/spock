@@ -64,6 +64,15 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 usersRole.AddTypePermissionsRecursively<VehicleInsurement>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
                 //VehicleInsurementDetail
                 usersRole.AddTypePermissionsRecursively<VehicleInsurementDetail>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                //Person
+                usersRole.AddNavigationPermission(BusinessObjects.Person.PATH_NAVIGATION, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<BusinessObjects.Person>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                //Employee
+                usersRole.AddNavigationPermission(Employee.PATH_NAVIGATION, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<Employee>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                //Customer
+                usersRole.AddNavigationPermission(Customer.PATH_NAVIGATION, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<Customer>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
             }
         }
     }

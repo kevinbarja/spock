@@ -15,7 +15,13 @@
           <Item Id="VehicleInsurements" ViewId="Spock_VehicleInsurement_ListView" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Reports" Caption="Reportes" Index="3" />
+      <Item Id="People" Caption="Personas" Index="3" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Customers" ViewId="Spock_Customer_ListView" IsNewNode="True" />
+          <Item Id="Employees" ViewId="Spock_Employee_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Caption="Reportes" Index="4" />
     </Items>
   </NavigationItems>
   <Options>
@@ -31,6 +37,34 @@
         <ColumnInfo Id="Name" Index="1" />
       </Columns>
     </ListView>
+    <DetailView Id="Spock_Customer_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Person" ShowCaption="False" Index="0" />
+            <LayoutGroup Id="Customer" Index="1">
+              <LayoutItem Id="Notes" ViewItem="Notes" ShowCaption="" Index="0" IsNewNode="True" />
+              <LayoutItem Id="IsActive" Index="1" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="Notes" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Spock_Customer_ListView" MasterDetailMode="ListViewAndDetailView" Criteria="IsExactType(This, 'Pentagono.Spock.Module.BusinessObjects.Customer')" />
+    <DetailView Id="Spock_Employee_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Person" ShowCaption="False" Index="0" />
+            <LayoutGroup Id="Employee" Index="1" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Spock_Employee_ListView" MasterDetailMode="ListViewAndDetailView" Criteria="IsExactType(This, 'Pentagono.Spock.Module.BusinessObjects.Employee')" />
     <ListView Id="Spock_VehicleBrand_ListView" MasterDetailMode="ListViewAndDetailView" />
     <ListView Id="Spock_VehicleInsurement_ListView" MasterDetailMode="ListViewAndDetailView" IsGroupPanelVisible="False" />
     <ListView Id="Spock_VehicleInsurement_VehicleInsurementDetail_ListView">
