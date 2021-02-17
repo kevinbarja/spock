@@ -11,11 +11,15 @@ namespace Pentagono.Spock.Module.BusinessObjects
     [Persistent(Schema.SPOCK + nameof(Employee))]
     public class Employee : Person
     {
+
         public new static string PATH_NAVIGATION = @"Application/NavigationItems/Items/People/Items/Employees";
+        public static string KBARJA_IMCRUZ_EMAIL = "kbarja@imcruz.com";
+
         public Employee(Session session) : base(session) { }
 
         string workEmail = string.Empty;
         string workPhone = string.Empty;
+        VehicleDealer vehicleDealer;
 
         [Caption("Email coorporativo")]
         [Indexed(Unique = true), NonCloneable]
@@ -38,6 +42,15 @@ namespace Pentagono.Spock.Module.BusinessObjects
         {
             get => workPhone;
             set => SetPropertyValue(ref workPhone, value);
+        }
+
+        [Caption("Consesionario")]
+        [Persistent("VehicleDealer_VehicleDealer")]
+        [Association("VehicleDealer-Employees"), RequiredField]
+        public VehicleDealer VehicleDealer
+        {
+            get => vehicleDealer;
+            set => SetPropertyValue(ref vehicleDealer, value);
         }
 
         [Caption("Activo")]

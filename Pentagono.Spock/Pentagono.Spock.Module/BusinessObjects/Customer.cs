@@ -12,6 +12,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
     public class Customer : Person
     {
         public new static string PATH_NAVIGATION = @"Application/NavigationItems/Items/People/Items/Customers";
+        public static string PACOSTA_EMAIL = "pacosta@gmail.com";
         public Customer(Session session) : base(session) { }
 
         string notes = string.Empty;

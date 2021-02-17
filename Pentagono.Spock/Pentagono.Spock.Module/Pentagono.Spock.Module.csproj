@@ -119,6 +119,11 @@
   <ItemGroup>
     <Compile Include="Annotations\RequiredField.cs" />
     <Compile Include="BusinessObjects\BusinessObject.cs" />
+    <Compile Include="BusinessObjects\VehiclePolicy.cs" />
+    <Compile Include="BusinessObjects\Enums\TimeUnit.cs" />
+    <Compile Include="BusinessObjects\VehicleQuotation.cs" />
+    <Compile Include="BusinessObjects\VehicleDealerVehicleBrand.cs" />
+    <Compile Include="BusinessObjects\VehicleDealer.cs" />
     <Compile Include="BusinessObjects\Customer.cs" />
     <Compile Include="BusinessObjects\Employee.cs" />
     <Compile Include="BusinessObjects\Person.cs" />
@@ -132,8 +137,11 @@
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="Controllers\BusinessObjectViewController.cs" />
     <Compile Include="DatabaseUpdate\Schema.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\VehiclePolicySeeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\VehicleQuotationSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\CustomerSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\EmployeeSeeder.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\VehicleDealerSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\VehicleInsurementSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\VehicleModelSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\VehicleTypeSeeder.cs" />

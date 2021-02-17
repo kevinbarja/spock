@@ -50,29 +50,53 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 //City
                 usersRole.AddNavigationPermission(City.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<City>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<City>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //VehicleBrand
                 usersRole.AddNavigationPermission(VehicleBrand.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<VehicleBrand>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleBrand>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //VehicleType
                 usersRole.AddNavigationPermission(VehicleType.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<VehicleType>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleType>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //VehicleModel
                 usersRole.AddNavigationPermission(VehicleModel.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<VehicleModel>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleModel>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //VehicleInsurement
                 usersRole.AddNavigationPermission(VehicleInsurement.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<VehicleInsurement>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleInsurement>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //VehicleInsurementDetail
                 usersRole.AddTypePermissionsRecursively<VehicleInsurementDetail>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleInsurementDetail>(SecurityOperations.Create, SecurityPermissionState.Allow);
+                //VehicleDealer
+                usersRole.AddNavigationPermission(VehicleDealer.PATH_NAVIGATION, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleDealer>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleDealer>(SecurityOperations.Create, SecurityPermissionState.Allow);
+                //VehicleDealerVehicleBrand
+                usersRole.AddTypePermissionsRecursively<VehicleDealerVehicleBrand>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleDealerVehicleBrand>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //Person
                 usersRole.AddNavigationPermission(BusinessObjects.Person.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<BusinessObjects.Person>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<BusinessObjects.Person>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //Employee
                 usersRole.AddNavigationPermission(Employee.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<Employee>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<Employee>(SecurityOperations.Create, SecurityPermissionState.Allow);
                 //Customer
                 usersRole.AddNavigationPermission(Customer.PATH_NAVIGATION, SecurityPermissionState.Allow);
                 usersRole.AddTypePermissionsRecursively<Customer>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<Customer>(SecurityOperations.Create, SecurityPermissionState.Allow);
+                //VehicleQuotation
+                usersRole.AddNavigationPermission(VehicleQuotation.PATH_NAVIGATION, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleQuotation>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehicleQuotation>(SecurityOperations.Create, SecurityPermissionState.Allow);
+                //VehiclePolicy
+                usersRole.AddNavigationPermission(VehiclePolicy.PATH_NAVIGATION, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehiclePolicy>(SecurityOperations.ReadWriteAccess, SecurityPermissionState.Allow);
+                usersRole.AddTypePermissionsRecursively<VehiclePolicy>(SecurityOperations.Create, SecurityPermissionState.Allow);
             }
         }
     }

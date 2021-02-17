@@ -43,6 +43,12 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref company, value);
         }
 
+        [MemberDesignTimeVisibility(false)]
+        [Association("VehicleBrand-VehicleDealerVehicleBrands")]
+        public XPCollection<VehicleDealerVehicleBrand> VehicleDealerVehicleBrands
+            => GetCollection<VehicleDealerVehicleBrand>();
+
+
         [Caption("Activa")]
         [VisibleInListView(false)]
         [VisibleInLookupListView(false)]

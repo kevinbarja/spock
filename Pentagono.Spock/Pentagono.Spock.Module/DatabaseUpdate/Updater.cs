@@ -31,6 +31,9 @@ namespace Pentagono.Spock.Module.DatabaseUpdate {
             new VehicleInsurementSeeder(this);
             new EmployeeSeeder(this);
             new CustomerSeeder(this);
+            new VehicleDealerSeeder(this);
+            new VehicleQuotationSeeder(this);
+            new VehiclePolicySeeder(this);
         }
 
 

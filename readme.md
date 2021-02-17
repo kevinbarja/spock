@@ -2,6 +2,21 @@
 
 This project was development under [this specifications](./docs/Requirements.pdf).
 
+### TODO
+  - Compute price in Vehicle Quotation.
+  - Transform Quotation into Policy.
+  - Reports of quotations and policies.
+  - Rol seeder (Administrador del sistema, Responsable de concesionario, Ejecutivo de ventas de consesionario y Cliente).
+
+### Live website
+
+[http://spock.somee.com](http://spock.somee.com)
+
+### Credentials
+
+  - **User:** admin
+  - **Pass:** {empty}
+
 ### Diagram
 
 ![diagram](./docs/diagram.png)
@@ -25,11 +40,6 @@ Change the string connection in [web config file](https://github.com/kevinbarja/
 ```
 
 Create a database called **spock**
-
-### Credentials
-
-  - **User:** admin
-  - **Pass:** {empty}
   
 ### Tutorials
 

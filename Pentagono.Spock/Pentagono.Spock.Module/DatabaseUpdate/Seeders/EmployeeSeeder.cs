@@ -21,7 +21,7 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                    PhoneNumber = "75632256",
                    Email = "kevinbarja@gmail.com",
                    HomeAddress = "Doble vía a la Guardia KM 6, B/ 13 de Enero, C/ Manantial",
-                   WorkEmail = "kbarja@imcruz.com",
+                   WorkEmail = Employee.KBARJA_IMCRUZ_EMAIL,
                    WorkPhone = "70931479"
                 };
             }

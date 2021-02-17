@@ -19,7 +19,7 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                    Name = "Pamela",
                    Lastname = "Acosta Fernandez",
                    PhoneNumber = "70931468",
-                   Email = "pacosta@gmail.com",
+                   Email = Customer.PACOSTA_EMAIL,
                    HomeAddress = "Av. Beni, entre 4to y 5to anillo. Condominio Santa María",
                    Notes = "Ninguna."
                 };

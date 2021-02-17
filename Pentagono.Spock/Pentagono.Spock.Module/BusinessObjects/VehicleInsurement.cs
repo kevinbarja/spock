@@ -12,7 +12,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
     public class VehicleInsurement : BusinessObject
     {
         public static string PATH_NAVIGATION = @"Application/NavigationItems/Items/InsurementTypes/Items/VehicleInsurements";
-
+        public static string AUTO_SEGURO = "Auto seguro";
         public VehicleInsurement(Session session) : base(session) { }
 
         string description = string.Empty;

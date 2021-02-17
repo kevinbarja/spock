@@ -25,6 +25,19 @@ namespace Pentagono.Spock.Web {
             DevExpress.ExpressApp.Web.TestScripts.TestScriptsManager.EasyTestEnabled = true;
 #endif
         }
+
+        private void CultureFormat()
+        {
+            WebApplication.Instance.SetFormattingCulture("es-BO");
+            WebApplication.Instance.CustomizeFormattingCulture +=
+                new EventHandler<CustomizeFormattingCultureEventArgs>(
+                delegate (object self, CustomizeFormattingCultureEventArgs args)
+                {
+                    args.FormattingCulture.NumberFormat.CurrencySymbol = "";
+                    //args.FormattingCulture.NumberFormat.CurrencyDecimalDigits
+                });
+        }
+
         protected void Session_Start(Object sender, EventArgs e) {
             Tracing.Initialize();
             WebApplication.SetInstance(Session, new SpockAspNetApplication());
@@ -39,13 +52,14 @@ namespace Pentagono.Spock.Web {
             if(ConfigurationManager.ConnectionStrings["ConnectionString"] != null) {
                 WebApplication.Instance.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             }
+            CultureFormat();
 #if EASYTEST
             if(ConfigurationManager.ConnectionStrings["EasyTestConnectionString"] != null) {
                 WebApplication.Instance.ConnectionString = ConfigurationManager.ConnectionStrings["EasyTestConnectionString"].ConnectionString;
             }
 #endif
 #if DEBUG
-            if(System.Diagnostics.Debugger.IsAttached && WebApplication.Instance.CheckCompatibilityType == CheckCompatibilityType.DatabaseSchema) {
+            if (System.Diagnostics.Debugger.IsAttached && WebApplication.Instance.CheckCompatibilityType == CheckCompatibilityType.DatabaseSchema) {
                 WebApplication.Instance.DatabaseUpdateMode = DatabaseUpdateMode.UpdateDatabaseAlways;
             }
 #endif

@@ -15,7 +15,7 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
             {
                 var vehicleInsurement = new VehicleInsurement(Session)
                 {
-                    Description = "Auto seguro",
+                    Description = VehicleInsurement.AUTO_SEGURO,
                 };
                 vehicleInsurement.VehicleInsurementDetail.Add(new VehicleInsurementDetail(Session)
                 {

@@ -21,7 +21,22 @@
           <Item Id="Employees" ViewId="Spock_Employee_ListView" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Reports" Caption="Reportes" Index="4" />
+      <Item Id="Companies" Caption="Empresas" Index="4" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="VehicleDealers" ViewId="Spock_VehicleDealer_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Quotations" Caption="Cotizaciones" Index="5" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="VehicleQuotations" Caption="Cotizaciones vehiculares" ViewId="Spock_VehicleQuotation_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Policies" Index="6" Caption="Polizas" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="VehiclePolicies" ViewId="Spock_VehiclePolicy_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Caption="Reportes" Index="7" />
     </Items>
   </NavigationItems>
   <Options>
@@ -66,6 +81,7 @@
     </DetailView>
     <ListView Id="Spock_Employee_ListView" MasterDetailMode="ListViewAndDetailView" Criteria="IsExactType(This, 'Pentagono.Spock.Module.BusinessObjects.Employee')" />
     <ListView Id="Spock_VehicleBrand_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <ListView Id="Spock_VehicleDealer_ListView" MasterDetailMode="ListViewAndDetailView" />
     <ListView Id="Spock_VehicleInsurement_ListView" MasterDetailMode="ListViewAndDetailView" IsGroupPanelVisible="False" />
     <ListView Id="Spock_VehicleInsurement_VehicleInsurementDetail_ListView">
       <Columns>
@@ -75,6 +91,24 @@
       </Columns>
     </ListView>
     <ListView Id="Spock_VehicleModel_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <ListView Id="Spock_VehicleModel_LookupListView">
+      <Columns>
+        <ColumnInfo Id="Name" Width="132" Caption="Modelo" />
+        <ColumnInfo Id="Brand" PropertyName="Brand.Name" Caption="Marca" Width="192" IsNewNode="True" />
+        <ColumnInfo Id="Type" PropertyName="Type.Name" Caption="Tipo" Width="201" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Spock_VehiclePolicy_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <DetailView Id="Spock_VehicleQuotation_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="VehicleQuotation" ShowCaption="False" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Spock_VehicleQuotation_ListView" MasterDetailMode="ListViewAndDetailView" />
     <ListView Id="Spock_VehicleType_ListView" MasterDetailMode="ListViewAndDetailView" />
   </Views>
 </Application>
