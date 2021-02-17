@@ -8,9 +8,11 @@ This project was development under [this specifications](./docs/Requirements.pdf
   - Reports of quotations and policies.
   - Rol seeder (Administrador del sistema, Responsable de concesionario, Ejecutivo de ventas de consesionario y Cliente).
 
+<!--
 ### Live website
 
 [http://spock.somee.com](http://spock.somee.com)
+-->
 
 ### Credentials
 
@@ -40,6 +42,10 @@ Change the string connection in [web config file](https://github.com/kevinbarja/
 ```
 
 Create a database called **spock**
+
+### Delete license file
+If you have a problemm with the licence file, please delete these files.
+![delete-license](./docs/delete-license.png)
   
 ### Tutorials
 
