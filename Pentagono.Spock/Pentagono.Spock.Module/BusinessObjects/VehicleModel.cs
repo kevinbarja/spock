@@ -21,7 +21,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
         VehicleBrand brand;
         VehicleType type;
 
-        [DisplayName("Nombre")]
+        [Caption("Nombre")]
         [VisibleInLookupListView(true)]
         [VisibleInListView(true)]
         [VisibleInDetailView(true)]

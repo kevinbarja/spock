@@ -16,7 +16,7 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 new City(Session)
                 {
                     Code = "SC",
-                    Name = "Santa Cruz"
+                    Name = City.SANTA_CRUZ
                 };
                 new City(Session)
                 {

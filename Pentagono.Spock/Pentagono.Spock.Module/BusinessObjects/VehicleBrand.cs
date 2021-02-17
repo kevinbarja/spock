@@ -21,7 +21,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
         string name = string.Empty;
         string company = string.Empty;
 
-        [DisplayName("Nombre")]
+        [Caption("Nombre")]
         [VisibleInLookupListView(true)]
         [VisibleInListView(true)]
         [VisibleInDetailView(true)]
@@ -32,7 +32,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref name, value);
         }
 
-        [DisplayName("Compañía")]
+        [Caption("Compañía")]
         [VisibleInLookupListView(true)]
         [VisibleInListView(true)]
         [VisibleInDetailView(true)]

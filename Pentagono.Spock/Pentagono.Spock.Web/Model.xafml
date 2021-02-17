@@ -2,11 +2,7 @@
 <Application>
   <NavigationItems>
     <Items>
-      <Item Id="Default" Caption="Seguridad">
-        <Items>
-          <Item Id="MyDetails" Caption="Mis datos" />
-        </Items>
-      </Item>
+      <Item Id="Default" Index="0" Caption="Inicio" />
     </Items>
   </NavigationItems>
   <SchemaModules>

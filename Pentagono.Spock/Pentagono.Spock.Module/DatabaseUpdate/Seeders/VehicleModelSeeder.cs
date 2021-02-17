@@ -17,19 +17,19 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 {
                     Name = VehicleModel.SWIFT,
                     Brand = (from vb in Query<VehicleBrand>() where vb.Name == VehicleBrand.SUSUKI select vb).FirstOrDefault(),
-                    Type = (from vb in Query<VehicleType>() where vb.Name == VehicleType.AUTO select vb).FirstOrDefault()
+                    Type = (from vt in Query<VehicleType>() where vt.Name == VehicleType.AUTO select vt).FirstOrDefault()
                 };
                 new VehicleModel(Session)
                 {
                     Name = VehicleModel.COROLLA,
                     Brand = (from vb in Query<VehicleBrand>() where vb.Name == VehicleBrand.TOYOTA select vb).FirstOrDefault(),
-                    Type = (from vb in Query<VehicleType>() where vb.Name == VehicleType.VAGONETA select vb).FirstOrDefault()
+                    Type = (from vt in Query<VehicleType>() where vt.Name == VehicleType.VAGONETA select vt).FirstOrDefault()
                 };
                 new VehicleModel(Session)
                 {
                     Name = VehicleModel.TRITON,
                     Brand = (from vb in Query<VehicleBrand>() where vb.Name == VehicleBrand.MITSUBISHI select vb).FirstOrDefault(),
-                    Type = (from vb in Query<VehicleType>() where vb.Name == VehicleType.CAMIONETA select vb).FirstOrDefault()
+                    Type = (from vt in Query<VehicleType>() where vt.Name == VehicleType.CAMIONETA select vt).FirstOrDefault()
                 };
             }
         }

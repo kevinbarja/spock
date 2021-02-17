@@ -15,10 +15,6 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
             {
                 new VehicleType(Session)
                 {
-                    Name = "Moto"
-                };
-                new VehicleType(Session)
-                {
                     Name = VehicleType.AUTO
                 };
                 new VehicleType(Session)
@@ -28,6 +24,12 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 new VehicleType(Session)
                 {
                     Name = VehicleType.CAMIONETA
+                };
+
+                /*
+                new VehicleType(Session)
+                {
+                    Name = "Moto"
                 };
                 new VehicleType(Session)
                 {
@@ -41,6 +43,7 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 {
                     Name = "Camión"
                 };
+                */
             }
         }
     }

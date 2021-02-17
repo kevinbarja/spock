@@ -19,7 +19,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
 
         string name = string.Empty;
 
-        [DisplayName("Nombre")]
+        [Caption("Nombre")]
         [VisibleInLookupListView(true)]
         [VisibleInListView(true)]
         [VisibleInDetailView(true)]

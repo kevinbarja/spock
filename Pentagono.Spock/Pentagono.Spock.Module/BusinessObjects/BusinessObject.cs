@@ -1,5 +1,7 @@
-﻿using DevExpress.ExpressApp;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using DevExpress.Xpo;
 using Pentagono.Spock.Module.Annotations;
 using System;
@@ -27,7 +29,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
 
         int id;
         bool isActive = true;
-        User user;
+        User createdBy;
         DateTime createdDate;
 
         [Key(true)]
@@ -46,11 +48,12 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref isActive, value);
         }
 
+        [Persistent("CreatedBy_User")]
         [MemberDesignTimeVisibility(false)]
-        public User User
+        public User CreatedBy
         {
-            get => user;
-            set => SetPropertyValue(ref user, value);
+            get => createdBy;
+            set => SetPropertyValue(ref createdBy, value);
         }
 
         [Caption("Fecha de creación")]
@@ -66,7 +69,10 @@ namespace Pentagono.Spock.Module.BusinessObjects
             base.OnSaving();
             if (!(Session is NestedUnitOfWork) && Session.IsNewObject(this))
             {
-                user = (User)SecuritySystem.CurrentUser;
+                if (SecuritySystem.CurrentUser is null)
+                    createdBy= Session.FindObject<User>(new BinaryOperator(nameof(PermissionPolicyUser.UserName), User.ADMIN_USERNAME));
+                else
+                    createdBy = Session.GetObjectByKey<User>((SecuritySystem.CurrentUser as User).Oid);
                 createdDate = DateTime.Now;
             }
         }

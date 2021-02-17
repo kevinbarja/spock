@@ -29,7 +29,6 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => base.IsAdministrative = value;
         }
 
-        [Caption()]
         [Browsable(false)]
         public new bool CanEditModel
         {

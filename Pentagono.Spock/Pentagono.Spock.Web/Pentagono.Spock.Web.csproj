@@ -281,6 +281,14 @@
   <ItemGroup>
     <Content Include="Model.Desktop.xafml" />
     <Content Include="Model.Tablet.xafml" />
+    <Content Include="Model_es-BO.xafml">
+      <DependentUpon>Model.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Model_es.xafml">
+      <DependentUpon>Model.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="ReadMe.txt" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -2,7 +2,7 @@
 <Application Title="Spock" Company="Pentágono" Description="Sistema de Pólizas y Cotizaciones para Brokers" AboutInfoString="{0:ProductName}&lt;br&gt;{0:Company}&lt;br&gt;{0:Version}&lt;br&gt;{0:Description}" PreferredLanguage="es-BO">
   <NavigationItems>
     <Items>
-      <Item Id="Params" IsNewNode="True">
+      <Item Id="Params" Index="1" Caption="Parametrización" IsNewNode="True">
         <Items IsNewNode="True">
           <Item Id="Cities" ViewId="Spock_City_ListView" Index="0" IsNewNode="True" />
           <Item Id="VehicleBrands" ViewId="Spock_VehicleBrand_ListView" Index="1" IsNewNode="True" />
@@ -10,7 +10,12 @@
           <Item Id="VehicleModels" ViewId="Spock_VehicleModel_ListView" Index="3" IsNewNode="True" />
         </Items>
       </Item>
-      <Item Id="Reports" Caption="Reportes" />
+      <Item Id="InsurementTypes" Caption="Tipos de seguros" Index="2" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="VehicleInsurements" ViewId="Spock_VehicleInsurement_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="Reports" Caption="Reportes" Index="3" />
     </Items>
   </NavigationItems>
   <Options>
@@ -27,6 +32,14 @@
       </Columns>
     </ListView>
     <ListView Id="Spock_VehicleBrand_ListView" MasterDetailMode="ListViewAndDetailView" />
+    <ListView Id="Spock_VehicleInsurement_ListView" MasterDetailMode="ListViewAndDetailView" IsGroupPanelVisible="False" />
+    <ListView Id="Spock_VehicleInsurement_VehicleInsurementDetail_ListView">
+      <Columns>
+        <ColumnInfo Id="Tax" Width="107" />
+        <ColumnInfo Id="VehicleType" Width="145" />
+        <ColumnInfo Id="City" Width="126" />
+      </Columns>
+    </ListView>
     <ListView Id="Spock_VehicleModel_ListView" MasterDetailMode="ListViewAndDetailView" />
     <ListView Id="Spock_VehicleType_ListView" MasterDetailMode="ListViewAndDetailView" />
   </Views>

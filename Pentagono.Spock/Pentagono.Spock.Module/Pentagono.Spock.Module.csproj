@@ -119,6 +119,8 @@
   <ItemGroup>
     <Compile Include="Annotations\RequiredField.cs" />
     <Compile Include="BusinessObjects\BusinessObject.cs" />
+    <Compile Include="BusinessObjects\VehicleInsurement.cs" />
+    <Compile Include="BusinessObjects\VehicleInsurementDetail.cs" />
     <Compile Include="BusinessObjects\VehicleModel.cs" />
     <Compile Include="BusinessObjects\VehicleType.cs" />
     <Compile Include="BusinessObjects\VehicleBrand.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="Controllers\BusinessObjectViewController.cs" />
     <Compile Include="DatabaseUpdate\Schema.cs" />
+    <Compile Include="DatabaseUpdate\Seeders\VehicleInsurementSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\VehicleModelSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\VehicleTypeSeeder.cs" />
     <Compile Include="DatabaseUpdate\Seeders\CitySeeder.cs" />

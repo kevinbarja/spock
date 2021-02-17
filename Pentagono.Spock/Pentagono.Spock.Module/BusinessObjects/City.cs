@@ -11,7 +11,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
     public class City : BusinessObject
     {
         public static string PATH_NAVIGATION = @"Application/NavigationItems/Items/Params/Items/Cities";
-
+        public static string SANTA_CRUZ = "Santa Cruz";
         public City(Session session) : base(session) { }
 
         string code = string.Empty;
@@ -29,7 +29,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref code, value);
         }
 
-        [DisplayName("Nombre")]
+        [Caption("Nombre")]
         [VisibleInLookupListView(true)]
         [VisibleInListView(true)]
         [VisibleInDetailView(true)]
