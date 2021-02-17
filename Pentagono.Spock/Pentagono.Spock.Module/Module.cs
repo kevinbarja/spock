@@ -18,6 +18,9 @@ using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.ExpressApp.Validation;
 using static Pentagono.Spock.Module.Annotations.RequiredFieldAttribute;
+using DevExpress.ExpressApp.ReportsV2;
+using Pentagono.Spock.Module.BusinessObjects;
+using Pentagono.Spock.Module.Reports;
 
 namespace Pentagono.Spock.Module {
     // For more typical usage scenarios, be sure to check out https://docs.devexpress.com/eXpressAppFramework/DevExpress.ExpressApp.ModuleBase.
@@ -28,7 +31,9 @@ namespace Pentagono.Spock.Module {
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
-            return new ModuleUpdater[] { updater };
+            PredefinedReportsUpdater reportUpdater = new PredefinedReportsUpdater(Application, objectSpace, versionFromDB);
+            reportUpdater.AddPredefinedReport<QuotationReport>("Coteizacion", typeof(VehicleQuotation), isInplaceReport: true);
+            return new ModuleUpdater[] { updater, reportUpdater };
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);

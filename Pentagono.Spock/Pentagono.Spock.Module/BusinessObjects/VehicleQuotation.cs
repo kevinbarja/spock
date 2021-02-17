@@ -10,6 +10,7 @@ using System.ComponentModel;
 
 namespace Pentagono.Spock.Module.BusinessObjects
 {
+    [VisibleInReports(true)]
     [DefaultProperty(nameof(Code))]
     [Caption("Cotizaciones vehiculares")]
     [Persistent(Schema.SPOCK + nameof(VehicleQuotation))]
