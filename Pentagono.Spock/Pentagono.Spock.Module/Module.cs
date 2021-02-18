@@ -32,7 +32,8 @@ namespace Pentagono.Spock.Module {
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
             PredefinedReportsUpdater reportUpdater = new PredefinedReportsUpdater(Application, objectSpace, versionFromDB);
-            reportUpdater.AddPredefinedReport<QuotationReport>("Coteizacion", typeof(VehicleQuotation), isInplaceReport: true);
+            reportUpdater.AddPredefinedReport<QuotationReport>("Cotización", typeof(VehicleQuotation), isInplaceReport: true);
+            reportUpdater.AddPredefinedReport<PolicyReport>("Póliza de seguro", typeof(VehiclePolicy), isInplaceReport: true);
             return new ModuleUpdater[] { updater, reportUpdater };
         }
         public override void Setup(XafApplication application) {
