@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application Title="Spock" Company="Pentágono" Description="Sistema de Pólizas y Cotizaciones para Brokers" AboutInfoString="{0:ProductName}&lt;br&gt;{0:Company}&lt;br&gt;{0:Version}&lt;br&gt;{0:Description}" PreferredLanguage="es-BO">
+<Application Title="Spock" Company="Pentágono" Description="Sistema de Pólizas y Cotizaciones para Brokers" AboutInfoString="{0:ProductName}&lt;br&gt;{0:Company}&lt;br&gt;{0:Version}&lt;br&gt;{0:Description}" PreferredLanguage="es-BO" Logo="Logo">
   <NavigationItems>
     <Items>
       <Item Id="Params" Index="1" Caption="Parametrización" IsNewNode="True">
@@ -98,6 +98,11 @@
         <ColumnInfo Id="Type" PropertyName="Type.Name" Caption="Tipo" Width="201" IsNewNode="True" />
       </Columns>
     </ListView>
+    <DetailView Id="Spock_VehiclePolicy_DetailView">
+      <Items>
+        <PropertyEditor Id="VehicleQuotation" DataSourceCriteria="[IsActive] = True" />
+      </Items>
+    </DetailView>
     <ListView Id="Spock_VehiclePolicy_ListView" MasterDetailMode="ListViewAndDetailView" />
     <DetailView Id="Spock_VehicleQuotation_DetailView">
       <Layout>

@@ -1,8 +1,10 @@
-﻿using DevExpress.Persistent.Base;
+﻿using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using Pentagono.Spock.Module.Annotations;
 using Pentagono.Spock.Module.DatabaseUpdate;
 using System;
+using System.Globalization;
 using Caption = System.ComponentModel.DisplayNameAttribute;
 
 namespace Pentagono.Spock.Module.BusinessObjects
@@ -15,12 +17,21 @@ namespace Pentagono.Spock.Module.BusinessObjects
 
         public VehiclePolicy(Session session) : base(session) { }
 
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            string codeComputed = "POV";
+            string timestamp = DateTime.UtcNow.ToString("fff", CultureInfo.InvariantCulture);
+            codeComputed += timestamp.PadLeft(5, '0');
+            Code = codeComputed;
+        }
+
         string code = string.Empty;
         VehicleQuotation vehicleQuotation;
         DateTime startDate;
         DateTime endDate;
 
-        //[Appearance("CodeDisabled", Enabled = false)]
+        [Appearance("VehiclePolicyCodeDisabled", Enabled = false)]
         [Caption("Código")]
         [Indexed(Unique = true), NonCloneable]
         [VisibleInLookupListView(true)]
@@ -56,6 +67,12 @@ namespace Pentagono.Spock.Module.BusinessObjects
         {
             get => endDate;
             set => SetPropertyValue(ref endDate, value);
+        }
+
+        protected override void OnSaving()
+        {
+            base.OnSaving();
+            VehicleQuotation.IsActive = false;
         }
     }
 }

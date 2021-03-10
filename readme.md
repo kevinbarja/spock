@@ -2,6 +2,7 @@
 
 This project was development under [this specifications](./docs/Requirements.pdf).
 
+<!--
 ### TODO
   - Compute price in Vehicle Quotation.
   - Transform Quotation into Policy.

@@ -206,6 +206,7 @@
     <None Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\Logo.png" />
     <Content Include="Reports\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup />

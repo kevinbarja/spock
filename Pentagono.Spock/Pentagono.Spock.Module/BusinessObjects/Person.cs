@@ -16,7 +16,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
 
         string documentNumber = string.Empty;
         string name = string.Empty;
-        string lastname = string.Empty;
+        //string lastname = string.Empty;
         string phoneNumber = string.Empty;
         string homeAddress = string.Empty;
         string email = string.Empty;
@@ -33,7 +33,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref documentNumber, value);
         }
 
-        [Caption("Nombres")]
+        [Caption("Nombre completo")]
         [VisibleInLookupListView(true)]
         [VisibleInListView(true)]
         [VisibleInDetailView(true)]
@@ -44,6 +44,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref name, value);
         }
 
+        /*
         [Caption("Apellidos")]
         [VisibleInLookupListView(true)]
         [VisibleInListView(true)]
@@ -54,6 +55,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             get => lastname;
             set => SetPropertyValue(ref lastname, value);
         }
+        */
 
         [Caption("Teléfono personal")]
         [VisibleInLookupListView(true)]

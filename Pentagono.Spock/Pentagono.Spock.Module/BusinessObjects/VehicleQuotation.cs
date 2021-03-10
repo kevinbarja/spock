@@ -7,6 +7,9 @@ using Pentagono.Spock.Module.DatabaseUpdate;
 using Caption = System.ComponentModel.DisplayNameAttribute;
 using System.Linq;
 using System.ComponentModel;
+using System;
+using System.Globalization;
+using DevExpress.ExpressApp;
 
 namespace Pentagono.Spock.Module.BusinessObjects
 {
@@ -21,9 +24,9 @@ namespace Pentagono.Spock.Module.BusinessObjects
 
         string code = string.Empty;
         string plateNumber;
-        int vehiclePrice;
+        decimal vehiclePrice;
         decimal time;
-        TimeUnit timeUnit = TimeUnit.None;
+        TimeUnit timeUnit = TimeUnit.Year;
         Customer customer;
         decimal priceComputed;
         VehicleInsurement vehicleInsurement;
@@ -32,9 +35,17 @@ namespace Pentagono.Spock.Module.BusinessObjects
 
         public VehicleQuotation(Session session) : base(session) { }
 
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            string codeComputed = "COV";
+            string timestamp = DateTime.UtcNow.ToString("fff",CultureInfo.InvariantCulture);
+            codeComputed += timestamp.PadLeft(5, '0');
+            Code = codeComputed;
+        }
 
 
-        //[Appearance("CodeDisabled", Enabled = false)]
+        [Appearance("VehicleQuotationCodeDisabled", Enabled = false)]
         [Caption("Código")]
         [Indexed(Unique = true), NonCloneable]
         [VisibleInLookupListView(true)]
@@ -57,6 +68,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref customer, value);
         }
 
+        [ImmediatePostData]
         [Caption("Modelo del vehículo")]
         [Persistent("VehicleModel_VehicleModel")]
         [RequiredField]
@@ -66,6 +78,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref vehicleModel, value);
         }
 
+        [ImmediatePostData]
         [Caption("Ciudad")]
         [Persistent("City_City")]
         [RequiredField]
@@ -75,6 +88,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref city, value);
         }
 
+        [ImmediatePostData]
         [Caption("Seguro vehicular")]
         [Persistent("VehicleInsurement_VehicleInsurement")]
         [RequiredField]
@@ -84,12 +98,13 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref vehicleInsurement, value);
         }
 
+        [ImmediatePostData]
         [Caption("Precio del vehículo (USD)")]
         [VisibleInLookupListView(false)]
         [VisibleInListView(true)]
         [VisibleInDetailView(true)]
         [Nullable(false), RequiredField]
-        public int VehiclePrice
+        public decimal VehiclePrice
         {
             get => vehiclePrice;
             set => SetPropertyValue(ref vehiclePrice, value);
@@ -106,6 +121,7 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref plateNumber, value);
         }
 
+        [ImmediatePostData]
         [Caption("Tiempo")]
         [ToolTip("¿Por qué tiempo desea contratar el seguro?")]
         [VisibleInLookupListView(false)]
@@ -126,8 +142,8 @@ namespace Pentagono.Spock.Module.BusinessObjects
             set => SetPropertyValue(ref timeUnit, value);
         }
 
-        [Caption("Precio calculado")]
-        //[Appearance("PriceComputedDisabled", Enabled = false)]
+        [Caption("Precio calculado (-1 si no se logró calcular)")]
+        [Appearance("VehicleQuotationPriceComputedDisabled", Enabled = false)]
         public decimal PriceComputed
         {
             get => priceComputed;
@@ -138,9 +154,45 @@ namespace Pentagono.Spock.Module.BusinessObjects
         [Appearance("CodeDisabled", Enabled = false)]
         public new Employee CreatedBy
         {
-            get {
+            get
+            {
                 //TODO: Implement this, filter createdBy email with employee workEmail
                 return (from e in Session.Query<Employee>() where e.WorkEmail == Employee.KBARJA_IMCRUZ_EMAIL select e).FirstOrDefault();
+            }
+        }
+
+        [Caption("Activo")]
+        [VisibleInListView(false)]
+        [VisibleInLookupListView(false)]
+        [VisibleInDetailView(false)]
+        public new bool IsActive
+        {
+            get => base.IsActive;
+            set => base.IsActive = value;
+        }
+
+        protected override void OnChanged(string propertyName, object oldValue, object newValue)
+        {
+            base.OnChanged(propertyName, oldValue, newValue);
+            if (propertyName == nameof(VehicleModel) || propertyName == nameof(City) ||
+                propertyName == nameof(VehicleInsurement) || propertyName == nameof(VehiclePrice) ||
+                propertyName == nameof(Time))
+            {
+                if (VehicleModel != null && City != null &&
+                    VehicleInsurement != null && VehiclePrice != 0 && Time != 0)
+                {
+                    var taxDetail = VehicleInsurement.VehicleInsurementDetail.Where(d => d.City.Id == City.Id
+                    && d.VehicleType.Id == VehicleModel.Type.Id).FirstOrDefault();
+                    if (taxDetail is null)
+                    {
+                        //throw new UserFriendlyException("Lo sentimos, con los datos ingresados no podemos calcular el precio del seguro.");
+                        priceComputed = -1;
+                    }
+                    else
+                    {
+                        priceComputed = VehiclePrice * taxDetail.Tax;
+                    }
+                }
             }
         }
 

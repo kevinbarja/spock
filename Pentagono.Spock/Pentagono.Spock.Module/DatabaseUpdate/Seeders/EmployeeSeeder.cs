@@ -16,8 +16,8 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 new Employee(Session)
                 {
                    DocumentNumber = "8935712",
-                   Name = "Kevin Eduardo",
-                   Lastname = "Barja Hoyos",
+                   Name = "Kevin Eduardo Barja Hoyos",
+                   //Lastname = "Barja Hoyos",
                    PhoneNumber = "75632256",
                    Email = "kevinbarja@gmail.com",
                    HomeAddress = "Doble vía a la Guardia KM 6, B/ 13 de Enero, C/ Manantial",

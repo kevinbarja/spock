@@ -15,7 +15,7 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
             {
                 new VehicleQuotation(Session)
                 {
-                    Code = "COT000001",
+                    Code = "COV000001",
                     PlateNumber = "2487NXH",
                     VehiclePrice = 8000,
                     Time = 1,
@@ -24,7 +24,8 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                     PriceComputed = 240,
                     VehicleInsurement = (from vi in Query<VehicleInsurement>() where vi.Description == VehicleInsurement.AUTO_SEGURO select vi).FirstOrDefault(),
                     City = (from c in Query<City>() where c.Name == City.SANTA_CRUZ select c).FirstOrDefault(),
-                    VehicleModel = (from vm in Query<VehicleModel>() where vm.Name == VehicleModel.SWIFT select vm).FirstOrDefault()
+                    VehicleModel = (from vm in Query<VehicleModel>() where vm.Name == VehicleModel.SWIFT select vm).FirstOrDefault(),
+                    //IsActive = false
                 };
                 
             }

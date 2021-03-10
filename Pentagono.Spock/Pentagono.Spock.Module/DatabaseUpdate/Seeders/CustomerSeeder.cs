@@ -16,8 +16,8 @@ namespace Pentagono.Spock.Module.DatabaseUpdate.Seeders
                 new Customer(Session)
                 {
                    DocumentNumber = "5467453",
-                   Name = "Pamela",
-                   Lastname = "Acosta Fernandez",
+                   Name = "Pamela Acosta Fernandez",
+//                   Lastname = "Acosta Fernandez",
                    PhoneNumber = "70931468",
                    Email = Customer.PACOSTA_EMAIL,
                    HomeAddress = "Av. Beni, entre 4to y 5to anillo. Condominio Santa María",
